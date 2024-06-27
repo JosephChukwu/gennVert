@@ -25,18 +25,23 @@ const Home = () => {
           sx={{
             display: "flex",
             flexDirection: "row",
-            // alignItems: "center",
             justifyContent: "space-between",
           }}
         >
           <Grid item>
-            <Typography variant="h6">Hi {currentUser.username}!</Typography>
-            <Typography variant="body1">Welcome back!</Typography>
+            <Typography variant="h6">
+              Hi {currentUser ? currentUser.username : "Guest"}!
+            </Typography>
+            <Typography variant="body1">
+              Welcome {currentUser ? "back" : "to our platform"}!
+            </Typography>
           </Grid>
 
           <Grid item>
             <Typography variant="h6">Genn coin:</Typography>
-            <Typography variant="body1">{currentUser.points}</Typography>
+            <Typography variant="body1">
+              {currentUser ? currentUser.points : "N/A"}
+            </Typography>
           </Grid>
         </Grid>
 
@@ -48,70 +53,92 @@ const Home = () => {
             borderRadius: "10px"
           }}
         >
-        <Grid sx={{display: "flex", flexDirection: "column", justifyContent: "space-around", gap: "3rem",mt: "2rem"}}>
-
           <Grid
             sx={{
               display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
+              flexDirection: "column",
               justifyContent: "space-around",
+              gap: "3rem",
+              mt: "2rem"
             }}
           >
             <Grid
               sx={{
                 display: "flex",
-                flexDirection: "column",
+                flexDirection: "row",
                 alignItems: "center",
+                justifyContent: "space-around",
               }}
             >
-              <Typography variant="h2" sx={{ color: "white" }}>Task Completed</Typography>
-              <Typography variant="h2" sx={{ color: "white" }}>{currentUser.tasksCompleted}</Typography>
-            </Grid>
-
-            <Grid
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Typography variant="h2" sx={{ color: "white" }}>Referrals</Typography>
-              <Typography variant="h2" sx={{ color: "white" }}>{currentUser.referrals}</Typography>
-            </Grid>
-          </Grid>
-
-
-          <Grid
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-around",
-            }}
-          >
-            <Grid
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Typography variant="h2" sx={{ color: "white" }}>Days Active</Typography>
-              <Typography variant="h2" sx={{ color: "white" }}>{currentUser.daysActive}</Typography>
-            </Grid>
-
-            <Grid
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Typography variant="h2" sx={{ color: "white" }}>Level</Typography>
-              <Typography variant="h2" sx={{ color: "white" }}>{Math.ceil(currentUser.points / 50)}</Typography>
+              <Grid
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <Typography variant="h2" sx={{ color: "white" }}>
+                  Task Completed
+                </Typography>
+                <Typography variant="h2" sx={{ color: "white" }}>
+                  {currentUser ? currentUser.tasksCompleted : "N/A"}
+                </Typography>
               </Grid>
-          </Grid>
+
+              <Grid
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <Typography variant="h2" sx={{ color: "white" }}>
+                  Referrals
+                </Typography>
+                <Typography variant="h2" sx={{ color: "white" }}>
+                  {currentUser ? currentUser.referrals : "N/A"}
+                </Typography>
+              </Grid>
+            </Grid>
+
+            <Grid
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-around",
+              }}
+            >
+              <Grid
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <Typography variant="h2" sx={{ color: "white" }}>
+                  Days Active
+                </Typography>
+                <Typography variant="h2" sx={{ color: "white" }}>
+                  {currentUser ? currentUser.daysActive : "N/A"}
+                </Typography>
+              </Grid>
+
+              <Grid
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <Typography variant="h2" sx={{ color: "white" }}>
+                  Level
+                </Typography>
+                <Typography variant="h2" sx={{ color: "white" }}>
+                  {currentUser ? Math.ceil(currentUser.points / 50) : "N/A"}
+                </Typography>
+              </Grid>
+            </Grid>
           </Grid>
         </Box>
       </Box>
